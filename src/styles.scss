@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0px;
+    font-family: Roboto;
+}
+
+
+
+.top-toolbar {
+    position: sticky;
+    /* For Safari */
+    position: -webkit-sticky;
+    justify-content: space-between;
+    top: 0;
+    z-index: 1;
+}
+
+md-toolbar-row {
+  justify-content: space-between;
+}
+
+md-sidenav-container {
+    background: rgba(240, 20, 20, 0.03);
+    background-color: blue;
+}
+
+.app-sidenav {
+    width: 300px;
+}
+
+md-card {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 10px;
+
+}
+
+.card-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/* Material icon styles */
+md-icon.md-18 {
+    font-size: 18px;
+}
+md-icon.md-24 {
+    font-size: 24px;
+}
+md-icon.md-36 {
+    font-size: 36px;
+}
+md-icon.md-48 {
+    font-size: 48px;
+}
+
+.app-action {
+  display: inline-block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
