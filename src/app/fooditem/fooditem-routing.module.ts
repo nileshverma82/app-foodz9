@@ -15,4 +15,4 @@ const fooditemRoutes: Routes = [
     exports: [RouterModule]
 })
 export class AppFoodItemRoutingModule { }
-export const routingComponents = [FooditemListComponent, FooditemDetailComponent, FooditemModifyComponent, FooditemNewComponent];
+

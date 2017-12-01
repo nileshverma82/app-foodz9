@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Fooditem } from './models/fooditem';
+import { Observable } from 'rxjs/Observable';
+
+export interface AppUser {
+  uid: string;
+  isAnonymous: boolean;
+  displayName?: string;
+  email?: string;
+  photoURL?: string;
+}
 
 @Injectable()
 export class DataService {
@@ -33,5 +42,23 @@ export class DataService {
   }
 
   /* FoodItems */
+
+  /* AppUser */
+
+  getUserData(user): Observable<AppUser> {
+    return this._afstore.doc<any>(`app-users/${user.uid}`).valueChanges();
+  }
+
+  updateUserData(user: any) {
+    const appusersRef: AngularFirestoreDocument<AppUser> = this._afstore.doc(`app-users/${user.uid}`);
+    const data: AppUser = {
+      uid: user.uid,
+      isAnonymous: user.isAnonymous,
+      displayName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+    };
+    return appusersRef.set(data);
+  }
 
 }
