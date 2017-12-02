@@ -4,10 +4,13 @@ import { AuthService } from './auth.service';
 import { DataService } from './data.service';
 import { RoutesService } from './routes.service';
 import { AuthGuard } from './auth.guard';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    AngularFireAuthModule
   ],
   declarations: [],
   providers: [AuthService, DataService, RoutesService, AuthGuard]

@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { DataService, AppUser } from './data.service';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 
 @Injectable()
 export class AuthService {
