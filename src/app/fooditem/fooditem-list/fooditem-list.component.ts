@@ -18,7 +18,7 @@ export class FooditemListComponent implements OnInit {
 
 
   ngOnInit() {
-    this._foodItemCollection = this.dataService$.fetchFooditems();
+    this._foodItemCollection = this.dataService$.fetchFooditemsList();
     this.foodItem = this._foodItemCollection.valueChanges();
   }
 

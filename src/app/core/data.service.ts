@@ -39,12 +39,12 @@ export class DataService {
   }
 
   /* FoodItems */
-   fetchFooditems(): AngularFirestoreCollection<Fooditem> {
+   fetchFooditemsList(): AngularFirestoreCollection<Fooditem> {
     return this._afstore.collection<Fooditem>(`${this.fooditemsPath}`); // , ref => ref.orderBy('created_at'));
     // return this._afstore.collection(this.fooditemsPath);
   }
 
-  getFooditem(id: string): AngularFirestoreDocument<Fooditem> {
+   getSingleFoodItem(id: string): AngularFirestoreDocument<Fooditem> {
     return this._afstore.doc(`${this.fooditemsPath}/${id}`);
   }
 
