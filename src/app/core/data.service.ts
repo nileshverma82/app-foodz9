@@ -39,8 +39,8 @@ export class DataService {
   }
 
   /* FoodItems */
-  get fooditems(): AngularFirestoreCollection<Fooditem> {
-    return this._afstore.collection<Fooditem>(`${this.fooditemsPath}`, ref => ref.orderBy('created_at'));
+   fetchFooditems(): AngularFirestoreCollection<Fooditem> {
+    return this._afstore.collection<Fooditem>(`${this.fooditemsPath}`); // , ref => ref.orderBy('created_at'));
     // return this._afstore.collection(this.fooditemsPath);
   }
 
@@ -61,7 +61,7 @@ export class DataService {
       cuisine: foodItemCollection.cuisine,
       price: foodItemCollection.price,
       serving: foodItemCollection.serving,
-      image1: foodItemCollection.imageurl1,
+      imageurl1: foodItemCollection.imageurl1,
       // image2: foodItemCollection.imageurl2,
       // image3: foodItemCollection.imageurl3,
       // image4: foodItemCollection.imageurl4,

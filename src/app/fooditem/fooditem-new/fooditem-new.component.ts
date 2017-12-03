@@ -58,8 +58,7 @@ export class FooditemNewComponent implements OnInit {
       isnonveg: [{ value: '', disabled: false }, Validators.required],
       cuisine: '',
       price: ['', Validators.required], // number ( no zeor / minus)
-      serving: ['', Validators.required],
-      imageurl: ['', Validators.required]
+      serving: ['', Validators.required]
     });
 
   }

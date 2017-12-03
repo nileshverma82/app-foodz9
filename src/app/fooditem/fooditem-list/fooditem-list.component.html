@@ -1,4 +1,9 @@
-<p>
-  fooditem-list works!
-</p>
-<router-outlet></router-outlet>
+<div *ngFor="let fooditem of foodItem | async">
+<mat-card width="300px">
+  <mat-card-header>
+    <mat-card-title>Name: {{ fooditem.title }}</mat-card-title>
+    <mat-card-subtitle>Email: {{ fooditem.price }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="fooditem.imageurl1">
+</mat-card>
+</div>
