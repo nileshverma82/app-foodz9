@@ -1,3 +1,68 @@
-<p>
-  fooditem-new works!
-</p>
+<form id="image-form" action="#">
+  <button mat-fab color="primary" style="float:initial" (click)="chooseFile.click()" style="display: center"><mat-icon>+</mat-icon></button>
+  <input #chooseFile style="display:none;" type="file" accept="image/*,capture=camera" (change)="uploadSingleFile($event)"
+    multiple>
+</form>
+<div *ngIf="URL">
+  <img [src]="URL">
+</div>
+
+<button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button>
+
+<form [formGroup]="newFoodItemForm" (ngSubmit)="onAddFoodItemFormSubmit(newFoodItemForm)">
+  <mat-vertical-stepper>
+    <mat-step [stepControl]="FoodDetails-First">
+      <ng-template matStepLabel>Enter Food Item Details</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Paneer Masala, Biryaani etc..." formControlName="title" required>
+      </mat-form-field>
+      <div color="red" *ngIf="!newFoodItemForm.controls['title'].valid && newFoodItemForm.controls['title'].touched">This Field is Required</div>
+      <b></b>
+      <ng-template matStepLabel>Description</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="description" formControlName="description">
+      </mat-form-field>
+      <ng-template matStepLabel>isnonveg</ng-template>
+
+      <mat-form-field>
+        <input matInput placeholder="category" formControlName="category">
+      </mat-form-field>
+      <b></b>
+      <mat-slide-toggle formControlName="isnonveg" color="red" [checked]="false">
+        IsNon-Veg
+      </mat-slide-toggle>
+
+      <div>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="FoodDetails-Second">
+      <ng-template matStepLabel>cuisine</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Indian, Western" formControlName="cuisine" required>
+      </mat-form-field>
+      <ng-template matStepLabel>price</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="150, 280..." formControlName="price" required>
+      </mat-form-field>
+      <ng-template matStepLabel>serving</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="1 OR 2 person" formControlName="serving" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious type="button">Back</button>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+
+        <button color="primary" type="submit" mat-raised-button matStepperPrevious>Submit</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</form>

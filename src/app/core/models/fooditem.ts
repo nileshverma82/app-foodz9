@@ -1,4 +1,4 @@
-export interface Fooditem {
+export class Fooditem {
     id: number;
     title: string; // FormInput
     description: string; // FormInput
@@ -7,7 +7,15 @@ export interface Fooditem {
     cuisine: string; // FormInput
     price: number; // FormInput
     serving: number; // FormInput
-    imageurl: string; // ImageUpload
+    imageurl1: string; // ImageUpload
+    imageurl2: string;
+    imageurl3: string;
+    imageurl4: string;
     uid: string; // User Auth
-    created_at: Date; // System date
+    created_at = new Date(); // System date
+
+      constructor(private url: string)
+      {
+        this.imageurl1 = url;
+      }
   }
