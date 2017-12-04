@@ -31,7 +31,8 @@ export class DataService {
   private appCartPath: string;
   private _foodItemCollection: AngularFirestoreCollection<any>;
   private firebaseId: string;
-  private fooditemObj: AngularFireObject<Fooditem>;
+  private selectedFoodItem: AngularFirestoreDocument<Fooditem>;
+  private selectedFoodItemData: Observable<Fooditem>;
 
   url$ = new BehaviorSubject('dummy_url');
 
@@ -47,9 +48,9 @@ export class DataService {
   }
 
    getSingleFoodItem(id: string): Observable<Fooditem> {
-     const doc: AngularFirestoreDocument<Fooditem> = this._afstore.doc(`${this.fooditemsPath}/${id}`);
-     const docData: Observable<Fooditem> = doc.valueChanges();
-     return docData;
+      this.selectedFoodItem = this._afstore.doc(`${this.fooditemsPath}/${id}`);
+      this.selectedFoodItemData = this.selectedFoodItem.valueChanges();
+      return this.selectedFoodItemData;
   }
 
   getFooditemsByUsers(uid: string): AngularFirestoreCollection<Fooditem[]> {
