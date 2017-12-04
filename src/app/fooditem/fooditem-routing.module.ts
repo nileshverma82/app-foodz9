@@ -7,7 +7,7 @@ import { FooditemNewComponent } from './fooditem-new/fooditem-new.component';
 
 const fooditemRoutes: Routes = [
     { path: 'fooditemlist', component: FooditemListComponent},
-    { path: 'details', component: FooditemDetailComponent},
+    { path: 'details/:id', component: FooditemDetailComponent},
     { path: 'modify', component: FooditemModifyComponent },
     { path: 'addfooditem', component: FooditemNewComponent }];
 @NgModule({

@@ -1,4 +1,5 @@
-<div *ngFor="let fooditem of foodItem | async">
+<div *ngFor="let fooditem of foodItem | async"
+[routerLink]="['/details', fooditem.id]">
 <mat-card width="300px">
   <mat-card-header>
     <mat-card-title>Name: {{ fooditem.title }}</mat-card-title>

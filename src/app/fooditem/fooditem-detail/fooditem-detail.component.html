@@ -1,38 +1,18 @@
-<p>
-  fooditem-detail works!
-</p>
-<div *ngIf="foodItem">
+
+<div *ngIf="selectedfoodItem">
   <mat-card>
-    Served By: Ambikesh*
-    <!-- <mat-icon style="float:right">chat</mat-icon> -->
     <br> <br>
     <mat-card-content style="display:flex;justify-content: space-between">
-      <mat-icon color="accent">motorcycle</mat-icon>
-      <mat-icon>directions_run</mat-icon>
-      <mat-icon>attach_money</mat-icon>
-      <mat-icon>credit_card</mat-icon>
     </mat-card-content>
   </mat-card>
   <mat-card style="margin-top:10px">
-    <img mat-card-image [src]="foodItem.foodImageURL" alt="xyz">
+    <img mat-card-image [src]="selectedfoodItem.imageurl1" alt="xyz">
     <mat-card-content>
-      <mat-card-title>{{foodItem.foodTitle}}</mat-card-title>
-      <mat-card-subtitle style="color:#F4511E">{{foodItem.foodPrice}}</mat-card-subtitle>
-      {{foodItem.foodDescription}}
+      <mat-card-title>{{selectedfoodItem.title}}</mat-card-title>
+      <mat-card-subtitle style="color:#F4511E">{{selectedfoodItem.price}}</mat-card-subtitle>
+      {{selectedfoodItem.description}}
     </mat-card-content>
   </mat-card>
   <div>
-    <mat-card style="margin-top:10px">
-      Ratings & Reviews
-      <mat-icon style="float:right" *ngFor="let start of [1,2,3,4,5]">star_border</mat-icon>
-    </mat-card>
-    <mat-list>
-      <mat-list-item *ngFor="let rating of [1,2,3,4,5]">Product Reivew: {{rating}}</mat-list-item>
-    </mat-list>
-  </div>
-  <div class="done">
-    <a mat-fab routerLink="/food-cart" routerLinkActive="active" (click)="onAddToCart()">
-      <mat-icon>add_shopping_cart</mat-icon>
-    </a>
   </div>
 </div>

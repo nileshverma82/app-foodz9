@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 // Firebase imports
 import * as firebase from 'firebase';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireObject } from 'angularfire2/database';
 
 // Local imports
 import { Fooditem } from './models/fooditem';
@@ -29,7 +30,8 @@ export class DataService {
   private appUsersPath: string;
   private appCartPath: string;
   private _foodItemCollection: AngularFirestoreCollection<any>;
-  private $firebaseId: string;
+  private firebaseId: string;
+  private fooditemObj: AngularFireObject<Fooditem>;
 
   url$ = new BehaviorSubject('dummy_url');
 
@@ -44,8 +46,10 @@ export class DataService {
     // return this._afstore.collection(this.fooditemsPath);
   }
 
-   getSingleFoodItem(id: string): AngularFirestoreDocument<Fooditem> {
-    return this._afstore.doc(`${this.fooditemsPath}/${id}`);
+   getSingleFoodItem(id: string): Observable<Fooditem> {
+     const doc: AngularFirestoreDocument<Fooditem> = this._afstore.doc(`${this.fooditemsPath}/${id}`);
+     const docData: Observable<Fooditem> = doc.valueChanges();
+     return docData;
   }
 
   getFooditemsByUsers(uid: string): AngularFirestoreCollection<Fooditem[]> {
@@ -53,7 +57,7 @@ export class DataService {
   }
 
   createFooditem(foodItemCollection: Fooditem) {
-    this._foodItemCollection.add({
+   this._foodItemCollection.add({
       title: foodItemCollection.title,
      // description: foodItemCollection.description,
       isNonveg: foodItemCollection.isnonveg,
@@ -67,7 +71,7 @@ export class DataService {
       // image4: foodItemCollection.imageurl4,
       createdAt: foodItemCollection.created_at
     }).then((docRef) => {
-      this.$firebaseId = docRef.id;
+      this.firebaseId = docRef.id;
       console.log(docRef.id);
       this._foodItemCollection.doc(docRef.id).update({
         id: docRef.id
