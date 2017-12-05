@@ -14,15 +14,21 @@ import { Observable } from 'rxjs/Observable';
 export class FooditemDetailComponent implements OnInit {
 
   subscription: Subscription;
-  selectedfoodItem: Fooditem;
+  selectedfoodItem: Observable<Fooditem>;
 
-  constructor(private dataService: DataService,
-    private route: ActivatedRoute ) { }
+  constructor(private _dataService: DataService,
+    private _route: ActivatedRoute ) { }
 
-  ngOnInit(): void {
-    this.subscription = this.route.params
-      .switchMap((params: Params) => this.dataService.getSingleFoodItem(params['id']))
-      .subscribe(fetchedFoodItem => this.selectedfoodItem = fetchedFoodItem);
-  }
+  ngOnInit() {
+
+  //   this.subscription = this.route.params
+  //     .switchMap((params: Params) => this.dataService.getSingleFoodItem(params['id']))
+  //     .subscribe(fetchedFoodItem => this.selectedfoodItem = fetchedFoodItem);
+  //
+  this.selectedfoodItem = this._route.paramMap.switchMap(
+    param => {
+      return this._dataService.getSingleFoodItem(param.get('id')).valueChanges();
+    });
+}
 }
 

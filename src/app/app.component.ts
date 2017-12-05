@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RoutesService } from './core/routes.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+   showAppToolBar = true;
+   fabAction = true;
+  constructor(private _routerService: RoutesService) { }
 }

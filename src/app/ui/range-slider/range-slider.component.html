@@ -1,0 +1,7 @@
+<div>
+  <h2>Range: {{defaultRange}} M</h2>
+  <br/>
+  <mat-slider style="width:100%" tick-interval="100" thumb-label=true step=100 max=2000 min=200 [(ngModel)]="defaultRange" (click)="getSliderRange(defaultRange)">
+  </mat-slider>
+  <p>Set the range using slider and click on next button.</p>
+</div>

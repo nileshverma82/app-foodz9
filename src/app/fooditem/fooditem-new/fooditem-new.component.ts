@@ -18,13 +18,12 @@ export class FooditemNewComponent implements OnInit {
   private snackBar: MatSnackBar;
   private selectedFileUpload: Image;
   newFoodItemForm: FormGroup;
-  private foodItemObj = new Fooditem('');
+ // private foodItemObj = new Fooditem('');
 
-
+  private foodItemObj: Fooditem;
 
   constructor(private _formBuilder: FormBuilder,
-              private dataService$: DataService)
-              {
+              private dataService$: DataService) {
                  this.buildNewItemForm();
               }
 

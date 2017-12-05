@@ -12,6 +12,12 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MaterialModule } from './material/material.module';
+import { AppToolbarComponent } from './ui/app-toolbar/app-toolbar.component';
+import { FabActionComponent } from './ui/fab-action/fab-action.component';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+import { RangeSliderComponent } from './ui/range-slider/range-slider.component';
+import { SidenavListComponent } from './ui/sidenav-list/sidenav-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +25,12 @@ import { MaterialModule } from './material/material.module';
   declarations: [
     AppComponent,
     WelcomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AppToolbarComponent,
+    FabActionComponent,
+    LoadingSpinnerComponent,
+    RangeSliderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +39,7 @@ import { MaterialModule } from './material/material.module';
     CoreModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firestore),
-    AngularFirestoreModule
+    AngularFirestoreModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

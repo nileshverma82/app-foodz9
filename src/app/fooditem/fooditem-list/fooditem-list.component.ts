@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../core/data.service';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Fooditem } from '../../core/models/fooditem';
 import { Observable } from 'rxjs/Observable';
+import { Fooditem } from '../../core/models/fooditem';
+import { Router } from '@angular/router';
+
+export interface FooditemWithId extends Fooditem { $key: string; }
 
 @Component({
   selector: 'app-fooditem-list',
@@ -10,16 +12,22 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./fooditem-list.component.scss']
 })
 export class FooditemListComponent implements OnInit {
+  isLoading = true;
+  fooditems: Observable<FooditemWithId[]>;
 
-   _foodItemCollection: AngularFirestoreCollection<Fooditem>;
-   foodItem: Observable<Fooditem[]>;
-
-  constructor(private dataService$: DataService) { }
-
+  constructor(
+    public dataService: DataService,
+    private _router: Router) { }
 
   ngOnInit() {
-    this._foodItemCollection = this.dataService$.fetchFooditemsList();
-    this.foodItem = this._foodItemCollection.valueChanges();
+    this.fooditems = this.dataService.fooditems.snapshotChanges()
+      .map(actions => {
+        return actions.map(action => {
+          const data = action.payload.doc.data() as Fooditem;
+          const $key = action.payload.doc.id;
+          this.isLoading = false;
+          return { $key, ...data };
+        });
+      });
   }
-
 }

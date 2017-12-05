@@ -1,4 +1,4 @@
-<div *ngFor="let fooditem of foodItem | async"
+<!-- <div *ngFor="let fooditem of foodItem | async"
 [routerLink]="['/details', fooditem.id]">
 <mat-card width="300px">
   <mat-card-header>
@@ -8,3 +8,41 @@
   <img mat-card-image [src]="fooditem.imageurl1">
 </mat-card>
 </div>
+<div> -->
+  <!-- <app-loading-spinner *ngIf="isLoading"></app-loading-spinner> -->
+
+  <mat-card *ngFor="let item of fooditems|async" class="mat-elevation-z1" style="border-radius: 10px; margin-top:5px">
+
+    <a [routerLink]="['/details', item.$key]">
+            <img mat-card-image [src]="item.imageurl1" alt="xyz" style="border-radius: 10px 10px 0 0; height: 200px" />
+        </a>
+
+    <div style="display: flex; justify-content:space-between">
+      <div style="display: flex">
+        <mat-icon style="color: green">new_releases</mat-icon>
+        <span style="font-weight:bold">{{item.title}}</span>
+      </div>
+      <span style="color:#ff5722; font-weight:bold">[ S$ {{item.price}} ]</span>
+    </div>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon mat-list-icon>verified_user</mat-icon>
+          <h4 mat-line>Served by: Ambikesh</h4>
+          <p mat-line> Old Bus Stand, Ambikapur</p>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-card-content>
+
+    <mat-card-actions align="right">
+      <!-- <button mat-button color="accent">Order now</button> -->
+      <div>
+        <mat-icon>thumb_up</mat-icon> 10
+        <mat-icon>forum</mat-icon> 5
+      </div>
+    </mat-card-actions>
+
+    <!-- <mat-card-footer>Served by: Ambikesh</mat-card-footer> -->
+
+  </mat-card>

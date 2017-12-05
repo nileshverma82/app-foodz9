@@ -42,15 +42,15 @@ export class DataService {
   }
 
   /* FoodItems */
-   fetchFooditemsList(): AngularFirestoreCollection<Fooditem> {
-    return this._afstore.collection<Fooditem>(`${this.fooditemsPath}`); // , ref => ref.orderBy('created_at'));
+   get fooditems(): AngularFirestoreCollection<Fooditem> {
+    return this._afstore.collection<Fooditem>(`${this.fooditemsPath}`);
     // return this._afstore.collection(this.fooditemsPath);
   }
 
-   getSingleFoodItem(id: string): Observable<Fooditem> {
-      this.selectedFoodItem = this._afstore.doc(`${this.fooditemsPath}/${id}`);
-      this.selectedFoodItemData = this.selectedFoodItem.valueChanges();
-      return this.selectedFoodItemData;
+   getSingleFoodItem(id: string): AngularFirestoreDocument<Fooditem> {
+      return this._afstore.doc(`${this.fooditemsPath}/${id}`);
+      // this.selectedFoodItemData = this.selectedFoodItem.valueChanges();
+      // return this.selectedFoodItemData;
   }
 
   getFooditemsByUsers(uid: string): AngularFirestoreCollection<Fooditem[]> {

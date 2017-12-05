@@ -1,18 +1,38 @@
+<mat-card *ngIf="selectedfoodItem | async as item" class="mat-elevation-z1" style="border-radius: 10px; margin-top:5px">
 
-<div *ngIf="selectedfoodItem">
-  <mat-card>
-    <br> <br>
-    <mat-card-content style="display:flex;justify-content: space-between">
-    </mat-card-content>
-  </mat-card>
-  <mat-card style="margin-top:10px">
-    <img mat-card-image [src]="selectedfoodItem.imageurl1" alt="xyz">
-    <mat-card-content>
-      <mat-card-title>{{selectedfoodItem.title}}</mat-card-title>
-      <mat-card-subtitle style="color:#F4511E">{{selectedfoodItem.price}}</mat-card-subtitle>
-      {{selectedfoodItem.description}}
-    </mat-card-content>
-  </mat-card>
-  <div>
+  <a>
+    <img mat-card-image 
+      [src]="item.imageurl1" 
+      alt="xyz" 
+      style="border-radius: 10px 10px 0 0; height: 200px" />
+  </a>
+
+  <div style="display: flex; justify-content:space-between">
+    <div style="display: flex">
+      <mat-icon style="color: green">new_releases</mat-icon>
+      <span style="font-weight:bold">{{item.title}}</span>
+    </div>
+    <span style="color:#ff5722; font-weight:bold">[ S$ {{item.price}} ]</span>
   </div>
-</div>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon mat-list-icon>verified_user</mat-icon>
+        <h4 mat-line>Served by: Ambikesh</h4>
+        <p mat-line> Old Bus Stand, Ambikapur</p>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions align="right">
+    <!-- <button mat-button color="accent">Order now</button> -->
+    <div>
+      <mat-icon>thumb_up</mat-icon> 10
+      <mat-icon>forum</mat-icon> 5
+    </div>
+  </mat-card-actions>
+
+  <!-- <mat-card-footer>Served by: Ambikesh</mat-card-footer> -->
+
+</mat-card>

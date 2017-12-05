@@ -15,11 +15,11 @@ body {
     z-index: 1;
 }
 
-md-toolbar-row {
+mat-toolbar-row {
   justify-content: space-between;
 }
 
-md-sidenav-container {
+mat-sidenav-container {
     background: rgba(240, 20, 20, 0.03);
     background-color: blue;
 }
@@ -28,7 +28,7 @@ md-sidenav-container {
     width: 300px;
 }
 
-md-card {
+mat-card {
     max-width: 100%;
     box-sizing: border-box;
     margin: 10px;
@@ -41,16 +41,16 @@ md-card {
 }
 
 /* Material icon styles */
-md-icon.md-18 {
+mat-icon.mat-18 {
     font-size: 18px;
 }
-md-icon.md-24 {
+mat-icon.mat-24 {
     font-size: 24px;
 }
-md-icon.md-36 {
+mat-icon.mat-36 {
     font-size: 36px;
 }
-md-icon.md-48 {
+mat-icon.mat-48 {
     font-size: 48px;
 }
 
